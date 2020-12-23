@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 setup(name='evestop',
-      packages=['evestop']
+      packages=['evestop'],
       version=0.1,
       description='Early stopping with exponential variance elmination',
       author='Vadim Liventsev',
