@@ -43,7 +43,7 @@ Start with
 pip install evestop
 ```
 
-If you're using keras, just replace `tf.keras.callbacks.EarlyStopping` callback with our `evestop.keras.EarlyStopping` 
+If you're using keras, just replace `tf.keras.callbacks.EarlyStopping` callback with our `evestop.kerascb.EarlyStopping` 
 
 If you're writing the optimization loop yourself, create the early stopping rule (make sure to set mode to 'min' if the vairable is being minimised):
 
@@ -53,4 +53,5 @@ eve = EveEarlyStopping(baseline=0, patience=1000, moothing=0.75, min_delta=0, mo
 ```
 
 And start optimizing your favourite variable with your favourite optimization algorithm.
-At every iteration you should call `eve.register(measurement)`, then check `eve.proceed` attribute. If early stopping is called for, it will be `False`
+At every iteration you should call `eve.register(measurement)`, then check `eve.proceed` attribute. If early stopping is called for, it will be `False`.
+See `examples` for more information.
