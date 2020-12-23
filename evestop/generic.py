@@ -1,4 +1,6 @@
 class EVEEarlyStopping():
+    proceed = True
+
     def reset(self):
         self.smoothed_quality = self.baseline
         self.best_smoothed_quality = self.smoothed_quality
@@ -24,16 +26,16 @@ class EVEEarlyStopping():
 
         self.reset()
 
-    def register(measurement, measuree=None):
+    def register(self, measurement, measuree=None):
         self.iters_since_record += 1
 
         quality = -measurement if self.minimize else measurement
         quality -= self.min_delta
-        self.smoothed_quality = self.smoothed_quality * smoothing + quality * (1 - smoothing)
+        self.smoothed_quality = self.smoothed_quality * self.smoothing + quality * (1 - self.smoothing)
 
         if self.smoothed_quality > self.best_smoothed_quality:
             self.best_smoothed_quality = self.smoothed_quality
             self.best_measuree = measuree
             self.iters_since_record = 0
 
-        self.proceed = self.iters_since_record <= patience
+        self.proceed = self.iters_since_record <= self.patience
